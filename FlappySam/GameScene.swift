@@ -10,12 +10,14 @@ import SpriteKit
 
 class GameScene: SKScene {
     let player = Player()
+    var platform: Platform?
     
     var contentCreated = false
     
     override func didMoveToView(view: SKView) {
         if !contentCreated {
             preparePlayerNode()
+            preparePlatform()
             contentCreated = true
         }
     }
@@ -28,6 +30,17 @@ class GameScene: SKScene {
         player.node.xScale = scaleFactor
         player.node.yScale = scaleFactor
         addChild(player.node)
+    }
+    
+    func preparePlatform() {
+        platform = Platform(width: self.frame.width, factor: 0.1)
+        platform!.node.anchorPoint = CGPointMake(0, 0)
+        platform!.node.position = CGPointMake(0, 0)
+        addChild(platform!.node)
+        platform!.node.runAction(SKAction.repeatActionForever(
+            SKAction.sequence([
+                SKAction.moveByX(-platform!.node.children[0].frame.width, y: 0, duration: 1),
+                SKAction.moveByX(platform!.node.children[0].frame.width, y: 0, duration: 0)])))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
