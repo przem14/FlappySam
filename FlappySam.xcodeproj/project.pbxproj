@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4652CB31C8E0A3100802513 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4652CB21C8E0A3100802513 /* Player.swift */; };
+		F4652CB71C8E0C4800802513 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4652CB61C8E0C4800802513 /* Media.xcassets */; };
 		F4A7387F1C8E04FE0088AAD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7387E1C8E04FE0088AAD6 /* AppDelegate.swift */; };
 		F4A738831C8E04FE0088AAD6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A738821C8E04FE0088AAD6 /* GameScene.swift */; };
 		F4A738851C8E04FE0088AAD6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A738841C8E04FE0088AAD6 /* GameViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4652CB21C8E0A3100802513 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F4652CB61C8E0C4800802513 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		F4A7387B1C8E04FE0088AAD6 /* FlappySam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappySam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A7387E1C8E04FE0088AAD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4A738821C8E04FE0088AAD6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -56,10 +60,12 @@
 			children = (
 				F4A7387E1C8E04FE0088AAD6 /* AppDelegate.swift */,
 				F4A738821C8E04FE0088AAD6 /* GameScene.swift */,
+				F4652CB21C8E0A3100802513 /* Player.swift */,
 				F4A738841C8E04FE0088AAD6 /* GameViewController.swift */,
 				F4A738861C8E04FE0088AAD6 /* Main.storyboard */,
 				F4A7388B1C8E04FE0088AAD6 /* LaunchScreen.storyboard */,
 				F4A7388E1C8E04FE0088AAD6 /* Info.plist */,
+				F4652CB61C8E0C4800802513 /* Media.xcassets */,
 			);
 			path = FlappySam;
 			sourceTree = "<group>";
@@ -124,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4A7388D1C8E04FE0088AAD6 /* LaunchScreen.storyboard in Resources */,
+				F4652CB71C8E0C4800802513 /* Media.xcassets in Resources */,
 				F4A738881C8E04FE0088AAD6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4652CB31C8E0A3100802513 /* Player.swift in Sources */,
 				F4A738831C8E04FE0088AAD6 /* GameScene.swift in Sources */,
 				F4A738851C8E04FE0088AAD6 /* GameViewController.swift in Sources */,
 				F4A7387F1C8E04FE0088AAD6 /* AppDelegate.swift in Sources */,
@@ -289,6 +297,7 @@
 				F4A738931C8E04FE0088AAD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
