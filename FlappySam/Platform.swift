@@ -11,7 +11,7 @@ import SpriteKit
 class Platform {
     let node = SKSpriteNode()
     private let texture = SKTexture(imageNamed: "platform")
-    private var factor: CGFloat = 1.0
+    private let factor: CGFloat
     
     init(width: CGFloat, factor: CGFloat) {
         self.factor = factor * width / texture.size().width
@@ -29,12 +29,24 @@ class Platform {
         node.addChild(createTileNode(index * texture.size().width))
     }
     
+    func getTileWidth() -> CGFloat {
+        return factor * texture.size().width
+    }
+    
     func createTileNode(x: CGFloat) -> SKSpriteNode {
         let tileNode = SKSpriteNode(texture: texture)
         tileNode.xScale = factor
         tileNode.yScale = factor
         tileNode.anchorPoint = CGPointMake(0, 0)
         tileNode.position = CGPointMake(x * factor, 0)
+        preparePhysics(tileNode)
         return tileNode
+    }
+    
+    func preparePhysics(node: SKSpriteNode) {
+        node.physicsBody
+            = SKPhysicsBody(rectangleOfSize: node.size,
+                            center: CGPointMake(CGRectGetMidX(node.frame), CGRectGetMidY(node.frame)))
+        node.physicsBody!.dynamic = false
     }
 }

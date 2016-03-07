@@ -10,9 +10,15 @@ import SpriteKit
 
 class Player {
     let node = SKSpriteNode(imageNamed: "frame-1")
+    let factor: CGFloat
     
-    init() {
+    init(width: CGFloat, factor: CGFloat) {
+        self.factor = width * factor / node.size.width
+        
+        node.xScale = self.factor
+        node.yScale = self.factor
         addAnimation()
+        preparePhysics()
     }
     
     func addAnimation() {
@@ -23,5 +29,19 @@ class Player {
         node.runAction(
             SKAction.repeatActionForever(
                 SKAction.animateWithTextures([frame1, frame2, frame3, frame4], timePerFrame: 0.1)))
+    }
+    
+    func preparePhysics() {
+        node.physicsBody
+            = SKPhysicsBody(rectangleOfSize: CGSizeMake(node.size.width, node.size.height * 0.8),
+                            center: CGPointMake(CGRectGetMidX(node.frame),
+                                                CGRectGetMidY(node.frame) + node.size.height * 0.1))
+        node.physicsBody!.allowsRotation = false
+        node.physicsBody!.dynamic = true
+    }
+    
+    func applyImpulse(velocityDy: CGFloat) {
+        let velocity = node.physicsBody!.velocity.dy
+        node.physicsBody!.applyImpulse(CGVectorMake(0, (-velocity + velocityDy) * node.physicsBody!.mass))
     }
 }

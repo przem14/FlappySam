@@ -9,7 +9,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    let player = Player()
+    var player: Player?
     var platform: Platform?
     
     var contentCreated = false
@@ -23,13 +23,10 @@ class GameScene: SKScene {
     }
     
     func preparePlayerNode() {
-        let percentageOfWidthForPlayer: CGFloat = 0.2
-        let scaleFactor = (frame.width * percentageOfWidthForPlayer) / player.node.frame.width
-        
-        player.node.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        player.node.xScale = scaleFactor
-        player.node.yScale = scaleFactor
-        addChild(player.node)
+        player = Player(width: self.frame.width, factor: 0.2)
+        player!.node.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        player!.node.zPosition = 1
+        addChild(player!.node)
     }
     
     func preparePlatform() {
@@ -39,12 +36,12 @@ class GameScene: SKScene {
         addChild(platform!.node)
         platform!.node.runAction(SKAction.repeatActionForever(
             SKAction.sequence([
-                SKAction.moveByX(-platform!.node.children[0].frame.width, y: 0, duration: 1),
-                SKAction.moveByX(platform!.node.children[0].frame.width, y: 0, duration: 0)])))
+                SKAction.moveByX(-platform!.getTileWidth(), y: 0, duration: 1),
+                SKAction.moveByX(platform!.getTileWidth(), y: 0, duration: 0)])))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       
+        player!.applyImpulse(self.frame.height * 0.75)
     }
    
     override func update(currentTime: CFTimeInterval) {
