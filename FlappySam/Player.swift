@@ -32,10 +32,7 @@ class Player {
     }
     
     func preparePhysics() {
-        node.physicsBody
-            = SKPhysicsBody(rectangleOfSize: CGSizeMake(node.size.width, node.size.height * 0.8),
-                            center: CGPointMake(CGRectGetMidX(node.frame),
-                                                CGRectGetMidY(node.frame) + node.size.height * 0.1))
+        node.physicsBody = SKPhysicsBody(texture: node.texture!, size: node.size)
         node.physicsBody!.allowsRotation = false
         node.physicsBody!.dynamic = true
     }
