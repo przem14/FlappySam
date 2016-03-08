@@ -10,7 +10,7 @@ import SpriteKit
 
 class Player {
     let node = SKSpriteNode(imageNamed: "frame-1")
-    let factor: CGFloat
+    private let factor: CGFloat
     
     init(width: CGFloat, factor: CGFloat) {
         self.factor = width * factor / node.size.width

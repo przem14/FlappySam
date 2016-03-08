@@ -33,6 +33,10 @@ class Platform {
         return factor * texture.size().width
     }
     
+    func getTileHeight() -> CGFloat {
+        return factor * texture.size().height
+    }
+    
     func createTileNode(x: CGFloat) -> SKSpriteNode {
         let tileNode = SKSpriteNode(texture: texture)
         tileNode.xScale = factor
@@ -41,6 +45,12 @@ class Platform {
         tileNode.position = CGPointMake(x * factor, 0)
         preparePhysics(tileNode)
         return tileNode
+    }
+    
+    func setCategory(category: UInt32) {
+        for node in self.node.children {
+            node.physicsBody!.categoryBitMask = category
+        }
     }
     
     func preparePhysics(node: SKSpriteNode) {
